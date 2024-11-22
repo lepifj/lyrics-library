@@ -1,6 +1,6 @@
-# Lyrics Library
+# LyricLibrary
 
-A sleek and modern web application for storing and managing your song lyrics. Built with Flask and modern web technologies.
+A modern web application for managing and organizing your favorite song lyrics.
 
 ## Features
 
