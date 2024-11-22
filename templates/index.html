@@ -6,6 +6,7 @@
     <title>Lyrics Library</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/lyricLogo.png') }}">
@@ -22,6 +23,7 @@
                 <h1>Lyrics Library</h1>
                 <div class="user-section">
                     <span class="username">Welcome, {{ current_user.username }}</span>
+                    <a href="{{ url_for('profile') }}" class="btn-secondary">Profile</a>
                     <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
                 </div>
             </div>
@@ -53,6 +55,7 @@
                 <div class="card-header">
                     <h3>{{ lyric.title }}</h3>
                     <div class="card-actions">
+                        <button class="btn-share"><i class="fas fa-share-alt"></i> Share</button>
                         <button class="btn-edit">Edit</button>
                         <button class="btn-delete">Delete</button>
                     </div>
@@ -67,6 +70,7 @@
             {% endfor %}
         </main>
     </div>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
