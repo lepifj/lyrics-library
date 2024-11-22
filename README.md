@@ -40,6 +40,7 @@ python app.py
 5. Open your browser and navigate to `http://localhost:5000`
 
 ## Usage
+## Login Details - Username: test, Password: test123
 
 - Click "New Lyric" to create a new entry
 - Fill in the song title and lyrics
