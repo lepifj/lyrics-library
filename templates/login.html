@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lyrics Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container fade-in">
+        <div class="auth-box scale-in">
+            <h1>Welcome Back</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p class="auth-link">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>

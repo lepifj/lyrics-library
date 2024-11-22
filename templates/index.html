@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+    <div class="container fade-in">
+        <header class="slide-down">
+            <div class="header-content">
+                <h1>Lyrics Library</h1>
+                <div class="user-section">
+                    <span class="username">Welcome, {{ current_user.username }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
+                </div>
+            </div>
+            <button id="newLyricBtn" class="btn-primary">New Lyric</button>
+        </header>
+
+        <div id="lyricForm" class="modal hidden">
+            <div class="modal-content scale-in">
+                <h2 id="formTitle">New Lyric</h2>
+                <form id="lyricEntryForm">
+                    <input type="hidden" id="lyricId">
+                    <div class="form-group">
+                        <input type="text" id="lyricTitle" placeholder="Song Title" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="lyricContent" placeholder="Write your lyrics here..." required></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">Save</button>
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <main id="lyricsContainer">
+            {% for lyric in lyrics %}
+            <div class="lyric-card fade-in-up" data-id="{{ lyric.id }}" style="animation-delay: {{ loop.index0 * 0.1 }}s">
+                <div class="card-header">
+                    <h3>{{ lyric.title }}</h3>
+                    <div class="card-actions">
+                        <button class="btn-edit">Edit</button>
+                        <button class="btn-delete">Delete</button>
+                    </div>
+                </div>
+                <div class="lyrics-content">
+                    <div class="lyrics-scroll">
+                        <p>{{ lyric.content }}</p>
+                    </div>
+                </div>
+                <span class="expand-icon">▼</span>
+            </div>
+            {% endfor %}
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
