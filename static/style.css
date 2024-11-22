@@ -198,7 +198,74 @@ header #newLyricBtn:active {
 .card-actions {
     display: flex;
     gap: 0.5rem;
-    margin-left: 1rem;
+    align-items: center;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-share {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    background-color: transparent;
+}
+
+.btn-share {
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-share i {
+    font-size: 1rem;
+    margin-right: 4px;
+}
+
+.btn-share:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-share:active {
+    transform: translateY(1px);
+}
+
+.btn-edit {
+    color: #FFB347;
+    border-color: #FFB347;
+}
+
+.btn-edit:hover {
+    background-color: #FFB347;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-edit:active {
+    transform: translateY(1px);
+}
+
+.btn-delete {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-delete:active {
+    transform: translateY(1px);
 }
 
 .lyrics-content {
@@ -254,29 +321,6 @@ header #newLyricBtn:active {
 
 .lyric-card.expanded .expand-icon {
     transform: rotate(180deg);
-}
-
-.btn-edit, .btn-delete {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    background-color: transparent;
-    color: var(--secondary-color);
-    border: 1px solid var(--secondary-color);
-    transform: translateY(0);
-    transition: all 0.2s ease;
-}
-
-.btn-edit:hover, .btn-delete:hover {
-    background-color: var(--secondary-color);
-    color: white;
-    transform: translateY(-1px);
-}
-
-.btn-edit:active, .btn-delete:active {
-    transform: translateY(1px);
 }
 
 .modal {

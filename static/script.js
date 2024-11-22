@@ -108,6 +108,37 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Handle share button click
+        if (e.target.classList.contains('btn-share')) {
+            e.stopPropagation(); // Prevent card expansion when clicking share
+            const title = lyricCard.querySelector('h3').textContent;
+            const content = lyricCard.querySelector('.lyrics-content p').textContent;
+            
+            const shareData = {
+                title: 'Shared Lyric: ' + title,
+                text: `${title}\n\n${content}\n\nShared via Lyrics Library`,
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = shareData.text;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Lyrics copied to clipboard!');
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+                alert('Could not share the lyrics. They have been copied to your clipboard instead.');
+            }
+            return;
+        }
+
         // Toggle card expansion
         const isButton = e.target.tagName === 'BUTTON';
         if (!isButton) {
