@@ -145,4 +145,44 @@ document.addEventListener('DOMContentLoaded', () => {
             lyricCard.classList.toggle('expanded');
         }
     });
+
+    // Dropdown menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const userMenu = document.querySelector('.user-menu');
+    let backdrop = document.querySelector('.backdrop');
+
+    // Create backdrop if it doesn't exist
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'backdrop';
+        document.body.appendChild(backdrop);
+    }
+
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        userMenu.classList.toggle('active');
+        backdrop.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside or on backdrop
+    backdrop.addEventListener('click', function() {
+        userMenu.classList.remove('active');
+        backdrop.classList.remove('active');
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!userMenu.contains(e.target)) {
+            userMenu.classList.remove('active');
+            backdrop.classList.remove('active');
+        }
+    });
+
+    // Close dropdown when clicking a menu item
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            userMenu.classList.remove('active');
+            backdrop.classList.remove('active');
+        });
+    });
 });

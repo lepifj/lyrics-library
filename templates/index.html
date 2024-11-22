@@ -22,9 +22,14 @@
             <div class="header-content">
                 <h1>Lyrics Library</h1>
                 <div class="user-section">
-                    <span class="username">Welcome, {{ current_user.username }}</span>
-                    <a href="{{ url_for('profile') }}" class="btn-secondary">Profile</a>
-                    <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
+                    <a href="{{ url_for('profile') }}" class="header-btn">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="{{ url_for('logout') }}" class="header-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
                 </div>
             </div>
             <button id="newLyricBtn" class="btn-primary">New Lyric</button>
