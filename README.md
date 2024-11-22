@@ -1,4 +1,4 @@
-# LyricLibrary
+# Lyric Library
 
 A modern web application for managing and organizing your favorite song lyrics.
 

@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const shareData = {
                 title: 'Shared Lyric: ' + title,
-                text: `${title}\n\n${content}\n\nShared via LyricLibrary`,
+                text: `${title}\n\n${content}\n\nShared via Lyric Library`,
             };
 
             try {
