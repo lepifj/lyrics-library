@@ -126,6 +126,38 @@ def delete_lyric(id):
     db.session.commit()
     return jsonify({'success': True})
 
+@app.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'POST':
+        action = request.form.get('action')
+        
+        if action == 'update_username':
+            new_username = request.form.get('username')
+            if new_username and new_username != current_user.username:
+                if User.query.filter_by(username=new_username).first():
+                    flash('Username already exists', 'error')
+                else:
+                    current_user.username = new_username
+                    db.session.commit()
+                    flash('Username updated successfully', 'success')
+        
+        elif action == 'update_password':
+            current_password = request.form.get('current_password')
+            new_password = request.form.get('new_password')
+            confirm_password = request.form.get('confirm_password')
+            
+            if not current_user.check_password(current_password):
+                flash('Current password is incorrect', 'error')
+            elif new_password != confirm_password:
+                flash('New passwords do not match', 'error')
+            else:
+                current_user.set_password(new_password)
+                db.session.commit()
+                flash('Password updated successfully', 'success')
+                
+    return render_template('profile.html')
+
 # Database initialization and migration
 def init_db():
     with app.app_context():

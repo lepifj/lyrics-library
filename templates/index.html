@@ -22,6 +22,7 @@
                 <h1>Lyrics Library</h1>
                 <div class="user-section">
                     <span class="username">Welcome, {{ current_user.username }}</span>
+                    <a href="{{ url_for('profile') }}" class="btn-secondary">Profile</a>
                     <a href="{{ url_for('logout') }}" class="btn-secondary">Logout</a>
                 </div>
             </div>
